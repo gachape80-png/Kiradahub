@@ -1,4 +1,24 @@
+-- Kiểm tra executor trước khi chạy script
+local executor = identifyexecutor and identifyexecutor() or "Unknown"
+if executor == "Fluxus" or executor == "Codex" then
+    game:GetService("StarterGui"):SetCore("SendNotification", {
+        Title = "Cảnh Báo",
+        Text = "Fluxus và Codex không được phép sử dụng script này! Bạn đã bị kick và bị chặn IP trong 1 tiếng.",
+        Duration = 10
+    })
+    wait(2) -- Đợi thông báo hiển thị
+    game.Players.LocalPlayer:Kick("Fluxus và Codex bị cấm. Liên hệ Discord: https://discord.gg/kJ9ydA2PP4 để được hỗ trợ.")
+    return -- Dừng script
+end
+
 loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V2/refs/heads/main/UiREDzV2.lua")))()
+
+-- Hiển thị intro khi bật script
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Kirada VN Hack",
+    Text = "Tác giả: Kirada & Habato\nNgười làm & viết: Kirada & Hiếu TV 124\nYouTube: KiradaGamer\nTikTok: HakGamer",
+    Duration = 10
+})
 
 local Window = MakeWindow({
     Hub = {
@@ -23,15 +43,15 @@ local Window = MakeWindow({
 local success, err = pcall(function()
     -- Kiểm tra tải logo
     local ImageService = game:GetService("ContentProvider")
-    ImageService:PreloadAsync({"rbxassetid://105364229944776"})
-    print("Logo loaded successfully: rbxassetid://105364229944776")
+    ImageService:PreloadAsync({"rbxassetid://183241779"})
+    print("Logo loaded successfully: rbxassetid://183241779")
 end)
 if not success then
-    warn("Lỗi tải logo: " .. tostring(err) .. ". Thử asset ID khác hoặc kiểm tra executor.")
+    warn("Lỗi tải logo: " .. tostring(err) .. ". Upload logo mới hoặc kiểm tra executor.")
 end
 
 MinimizeButton({
-    Image = "rbxassetid://105364229944776", -- Logo từ URL bạn cung cấp
+    Image = "rbxassetid://183241779", -- Logo tạm thời, thay bằng rbxassetid://[new-ID] sau khi upload
     Size = {60, 60},
     Color = Color3.fromRGB(10, 10, 10),
     Corner = true,
@@ -61,7 +81,7 @@ AddButton(Tab1o, {
 })
 
 AddButton(Tab1o, {
-    Name = "Run H4X Script",
+    Name = "H4X Script",
     Callback = function()
         local success, err = pcall(function()
             local scriptContent = game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader.lua", true)
@@ -75,7 +95,7 @@ AddButton(Tab1o, {
 })
 
 AddButton(Tab1o, {
-    Name = "Run Nat Hub",
+    Name = "Nat Hub",
     Callback = function()
         local success, err = pcall(function()
             local scriptContent = game:HttpGet("https://get.nathub.xyz/loader")
@@ -89,7 +109,7 @@ AddButton(Tab1o, {
 })
 
 AddButton(Tab1o, {
-    Name = "Run Banana Hub Fake",
+    Name = "Banana Hub Fake",
     Callback = function()
         local success, err = pcall(function()
             local scriptContent = game:HttpGet("https://raw.githubusercontent.com/kimprobloxdz/Banana-Free/refs/heads/main/Protected_5609200582002947.lua.txt")
@@ -103,7 +123,7 @@ AddButton(Tab1o, {
 })
 
 AddButton(Tab1o, {
-    Name = "Run Quantum Hub",
+    Name = "Quantum Hub",
     Callback = function()
         local success, err = pcall(function()
             local scriptContent = game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua")
@@ -112,6 +132,59 @@ AddButton(Tab1o, {
         end)
         if not success then
             warn("Lỗi load Quantum Hub: " .. tostring(err))
+        end
+    end
+})
+
+------ Tab: Discord
+local Tab2o = MakeTab({Name = "Discord"})
+
+AddButton(Tab2o, {
+    Name = "Copy Discord Link",
+    Callback = function()
+        local success, err = pcall(function()
+            setclipboard("https://discord.gg/kJ9ydA2PP4")
+            print("Đã sao chép link Discord: https://discord.gg/kJ9ydA2PP4")
+        end)
+        if not success then
+            warn("Lỗi sao chép link Discord: " .. tostring(err))
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "Discord",
+                Text = "Đã sao chép link Discord vào clipboard!",
+                Duration = 5
+            })
+        end
+    end
+})
+
+------ Tab: 99 Đêm
+local Tab3o = MakeTab({Name = "99 Đêm"})
+
+AddButton(Tab3o, {
+    Name = "NatHub",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://get.nathub.xyz/loader")
+            print("NatHub (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load NatHub (99 Đêm): " .. tostring(err))
+        end
+    end
+})
+
+AddButton(Tab3o, {
+    Name = "H4X",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader.lua", true)
+            print("H4X (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load H4X (99 Đêm): " .. tostring(err))
         end
     end
 })
