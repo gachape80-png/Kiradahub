@@ -101,3 +101,17 @@ AddButton(Tab1o, {
         end
     end
 })
+
+AddButton(Tab1o, {
+    Name = "Run Quantum Hub",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/flazhy/QuantumOnyx/refs/heads/main/QuantumOnyx.lua")
+            print("Quantum Hub: Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load Quantum Hub: " .. tostring(err))
+        end
+    end
+})
