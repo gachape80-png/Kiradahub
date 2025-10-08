@@ -226,6 +226,20 @@ AddButton(Tab3o, {
     end
 })
 
+AddButton(Tab3o, {
+    Name = "Skibidi",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/caomod2077/Script/refs/heads/main/FoxnameHub.lua")
+            print("Skibidi (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load Skibidi (99 Đêm): " .. tostring(err))
+        end
+    end
+})
+
 ------ Tab: Discord
 local Tab4o = MakeTab({Name = "Discord"})
 
