@@ -43,15 +43,15 @@ local Window = MakeWindow({
 local success, err = pcall(function()
     -- Kiểm tra tải logo
     local ImageService = game:GetService("ContentProvider")
-    ImageService:PreloadAsync({"rbxassetid://183241779"})
-    print("Logo loaded successfully: rbxassetid://183241779")
+    ImageService:PreloadAsync({"rbxassetid://89326205091486"}) -- ID logo đã được thay
+    print("Logo loaded successfully: rbxassetid://89326205091486")
 end)
 if not success then
-    warn("Lỗi tải logo: " .. tostring(err) .. ". Upload logo mới hoặc kiểm tra executor.")
+    warn("Lỗi tải logo: " .. tostring(err) .. ". Kiểm tra ID ảnh hoặc executor.")
 end
 
 MinimizeButton({
-    Image = "rbxassetid://183241779", -- Logo tạm thời, thay bằng rbxassetid://[new-ID] sau khi upload
+    Image = "rbxassetid://89326205091486", -- ID logo đã được thay
     Size = {60, 60},
     Color = Color3.fromRGB(10, 10, 10),
     Corner = true,
