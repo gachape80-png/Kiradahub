@@ -136,10 +136,41 @@ AddButton(Tab1o, {
     end
 })
 
------- Tab: Discord
-local Tab2o = MakeTab({Name = "Discord"})
+------ Tab: 99 Đêm
+local Tab2o = MakeTab({Name = "99 Đêm"})
 
 AddButton(Tab2o, {
+    Name = "NatHub",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://get.nathub.xyz/loader")
+            print("NatHub (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load NatHub (99 Đêm): " .. tostring(err))
+        end
+    end
+})
+
+AddButton(Tab2o, {
+    Name = "H4X",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader.lua", true)
+            print("H4X (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load H4X (99 Đêm): " .. tostring(err))
+        end
+    end
+})
+
+------ Tab: Discord
+local Tab3o = MakeTab({Name = "Discord"})
+
+AddButton(Tab3o, {
     Name = "Copy Discord Link",
     Callback = function()
         local success, err = pcall(function()
@@ -158,33 +189,40 @@ AddButton(Tab2o, {
     end
 })
 
------- Tab: 99 Đêm
-local Tab3o = MakeTab({Name = "99 Đêm"})
-
 AddButton(Tab3o, {
-    Name = "NatHub",
+    Name = "Copy YouTube Link",
     Callback = function()
         local success, err = pcall(function()
-            local scriptContent = game:HttpGet("https://get.nathub.xyz/loader")
-            print("NatHub (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
-            loadstring(scriptContent)()
+            setclipboard("https://www.youtube.com/@kiradavn")
+            print("Đã sao chép link YouTube: https://www.youtube.com/@kiradavn")
         end)
         if not success then
-            warn("Lỗi load NatHub (99 Đêm): " .. tostring(err))
+            warn("Lỗi sao chép link YouTube: " .. tostring(err))
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "YouTube",
+                Text = "Đã sao chép link YouTube vào clipboard!",
+                Duration = 5
+            })
         end
     end
 })
 
 AddButton(Tab3o, {
-    Name = "H4X",
+    Name = "Copy TikTok Link",
     Callback = function()
         local success, err = pcall(function()
-            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader.lua", true)
-            print("H4X (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
-            loadstring(scriptContent)()
+            setclipboard("https://www.tiktok.com/@offbyebyesad")
+            print("Đã sao chép link TikTok: https://www.tiktok.com/@offbyebyesad")
         end)
         if not success then
-            warn("Lỗi load H4X (99 Đêm): " .. tostring(err))
+            warn("Lỗi sao chép link TikTok: " .. tostring(err))
+        else
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "TikTok",
+                Text = "Đã sao chép link TikTok vào clipboard!",
+                Duration = 5
+            })
         end
     end
 })
