@@ -16,14 +16,14 @@ loadstring(game:HttpGet(("https://raw.githubusercontent.com/daucobonhi/Ui-Redz-V
 -- Hiển thị intro khi bật script
 game:GetService("StarterGui"):SetCore("SendNotification", {
     Title = "Kirada VN Hack",
-    Text = "Tác giả: Kirada & Habato\nNgười làm & viết: Kirada & Hiếu TV 124\nYouTube: KiradaGamer\nTikTok: HakGamer",
+    Text = "Tác giả: Kirada & Habato\nNgười làm & viết: Kirada & Hiếu TV",
     Duration = 10
 })
 
 local Window = MakeWindow({
     Hub = {
-        Title = "Kirada VN",
-        Animation = "Youtube: Kirada VN"
+        Title = "kirada vn",
+        Animation = "Youtube: kirada vn "
     },
     Key = {
         KeySystem = false,
@@ -59,8 +59,8 @@ MinimizeButton({
     StrokeColor = Color3.fromRGB(255, 0, 0)
 })
 
------- Tab: Script Farm
-local Tab1o = MakeTab({Name = "Script Farm"})
+------ Tab: Blox Fruit
+local Tab1o = MakeTab({Name = "Blox Fruit"})
 
 AddButton(Tab1o, {
     Name = "Redz Hub (Updated 2025)",
@@ -136,25 +136,56 @@ AddButton(Tab1o, {
     end
 })
 
------- Tab: 99 Đêm
-local Tab2o = MakeTab({Name = "99 Đêm"})
-
-AddButton(Tab2o, {
-    Name = "NatHub",
+AddButton(Tab1o, {
+    Name = "Speed Hub",
     Callback = function()
         local success, err = pcall(function()
-            local scriptContent = game:HttpGet("https://get.nathub.xyz/loader")
-            print("NatHub (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua")
+            print("Speed Hub (Blox Fruit): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
             loadstring(scriptContent)()
         end)
         if not success then
-            warn("Lỗi load NatHub (99 Đêm): " .. tostring(err))
+            warn("Lỗi load Speed Hub (Blox Fruit): " .. tostring(err))
         end
     end
 })
 
+------ Tab: Hop Server
+local Tab2o = MakeTab({Name = "Hop Server"})
+
 AddButton(Tab2o, {
-    Name = "H4X",
+    Name = "Teddy Hub (getkey)",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/Teddyseetink/Haidepzai/refs/heads/main/TEDDYHUB-FREEMIUM")
+            print("Teddy Hub (Hop Server): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load Teddy Hub (Hop Server): " .. tostring(err))
+        end
+    end
+})
+
+------ Tab: 99 Đêm
+local Tab3o = MakeTab({Name = "99 Đêm"})
+
+AddButton(Tab3o, {
+    Name = "NATHUB (getkey)",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://get.nathub.xyz/loader")
+            print("NATHUB (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load NATHUB (99 Đêm): " .. tostring(err))
+        end
+    end
+})
+
+AddButton(Tab3o, {
+    Name = "H4X (getkey)",
     Callback = function()
         local success, err = pcall(function()
             local scriptContent = game:HttpGet("https://raw.githubusercontent.com/H4xScripts/Loader/refs/heads/main/loader.lua", true)
@@ -167,10 +198,38 @@ AddButton(Tab2o, {
     end
 })
 
------- Tab: Discord
-local Tab3o = MakeTab({Name = "Discord"})
+AddButton(Tab3o, {
+    Name = "Speed Hub (getkey)",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/AhmadV99/Speed-Hub-X/main/Speed%20Hub%20X.lua")
+            print("Speed Hub (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load Speed Hub (99 Đêm): " .. tostring(err))
+        end
+    end
+})
 
 AddButton(Tab3o, {
+    Name = "Hack Farm Kim Cương",
+    Callback = function()
+        local success, err = pcall(function()
+            local scriptContent = game:HttpGet("https://raw.githubusercontent.com/sleepyvill/script/refs/heads/main/99nights.lua")
+            print("Hack Farm Kim Cương (99 Đêm): Đã tải script, kích thước: " .. #scriptContent .. " bytes")
+            loadstring(scriptContent)()
+        end)
+        if not success then
+            warn("Lỗi load Hack Farm Kim Cương (99 Đêm): " .. tostring(err))
+        end
+    end
+})
+
+------ Tab: Discord
+local Tab4o = MakeTab({Name = "Discord"})
+
+AddButton(Tab4o, {
     Name = "Copy Discord Link",
     Callback = function()
         local success, err = pcall(function()
@@ -189,7 +248,7 @@ AddButton(Tab3o, {
     end
 })
 
-AddButton(Tab3o, {
+AddButton(Tab4o, {
     Name = "Copy YouTube Link",
     Callback = function()
         local success, err = pcall(function()
@@ -208,7 +267,7 @@ AddButton(Tab3o, {
     end
 })
 
-AddButton(Tab3o, {
+AddButton(Tab4o, {
     Name = "Copy TikTok Link",
     Callback = function()
         local success, err = pcall(function()
@@ -225,4 +284,32 @@ AddButton(Tab3o, {
             })
         end
     end
+})
+
+repeat task.wait() until game:IsLoaded() and game:GetService("Players") and game.Players.LocalPlayer and game.Players.LocalPlayer:FindFirstChild("PlayerGui") 
+
+-- Thêm Anti-AFK
+local AntiAFK = coroutine.wrap(function()
+    while true do
+        local success, err = pcall(function()
+            local VirtualUser = game:GetService("VirtualUser")
+            VirtualUser:CaptureController()
+            VirtualUser:SetKeyDown("w")
+            wait(0.1)
+            VirtualUser:SetKeyUp("w")
+            print("Anti-AFK: Đã mô phỏng hoạt động")
+        end)
+        if not success then
+            warn("Lỗi Anti-AFK: " .. tostring(err))
+        end
+        wait(60)
+    end
+end)
+AntiAFK()
+
+-- Thông báo Anti-AFK được kích hoạt
+game:GetService("StarterGui"):SetCore("SendNotification", {
+    Title = "Anti-AFK",
+    Text = "Chế độ Anti-AFK đã được kích hoạt!",
+    Duration = 5
 })
